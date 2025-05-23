@@ -11,6 +11,6 @@ Right now, I'm just testing `Xgeev`.
 It should be enough to just clone and run (with Julia installed):
 ```bash
 git clone https://github.com/matteosecli/magma-tests.git && cd magma-tests
-julia --project=. testXgeev.jl N | tee results.log
+julia --project testXgeev.jl N | tee results.log
 ```
 where `N` is the matrix size or a sequence of sizes to test.

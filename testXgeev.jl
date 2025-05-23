@@ -4,6 +4,7 @@ Pkg.instantiate()
 
 using BenchmarkTools
 using CUDA
+using Libdl
 using LinearAlgebra
 using MKL_jll
 
@@ -53,5 +54,18 @@ if MKL_jll.is_available()
     println(BLAS.get_config()) # Print BLAS configuration
 
     # Run tests with MKL LinearAlgebra provider
+    runTest(testTypes, Nvalues)
+end
+
+if Libdl.find_library("libnvpl_blas_ilp64_gomp")
+    using NVPL
+
+    # Run tests for NVPL
+    println("\n===== Switching to NVPL =====")
+    # Print NVPL version here
+    println(rpad("NVPL BLAS version:", 23), lpad(NVPL.[blas,lapack]_get_version(), 8))
+    println(BLAS.get_config()) # Print BLAS configuration
+
+    # Run tests with NVPL LinearAlgebra provider
     runTest(testTypes, Nvalues)
 end
