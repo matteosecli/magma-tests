@@ -14,3 +14,12 @@ git clone https://github.com/matteosecli/magma-tests.git && cd magma-tests
 julia --project testXgeev.jl N | tee results.log
 ```
 where `N` is the matrix size or a sequence of sizes to test.
+
+To plot your results, use
+```bash
+julia --project plot_benchmarks.jl results.log
+```
+The above command will generate an intermediate `results.csv` file. If you prefer to only generate the `csv` file for later processing with your own tools, you can use
+```bash
+julia --project generate_csv.jl results.log
+```
