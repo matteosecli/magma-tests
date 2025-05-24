@@ -1,5 +1,5 @@
 using Pkg
-Pkg.resolve()
+#Pkg.resolve()
 Pkg.instantiate()
 
 using BenchmarkTools
@@ -13,6 +13,12 @@ include("MAGMACompat.jl")
 
 # using Pkg, Artifacts, MAGMA_jll
 # Pkg.Artifacts.ensure_artifact_installed("MAGMA",Artifacts.find_artifacts_toml(pathof(MAGMA_jll)))
+# Base.compilecache(Base.identify_package("MAGMA_jll"))
+# Base.compilecache(Base.identify_package("Magma"))
+# using CUDA
+# CUDA.set_runtime_version!(v"12.8")  # At least 12.6.2 is needed
+# using Magma
+# Magma.LibMagma.set_libmagma_path(...)  # Set the path to the Magma library if necessary
 
 function runTest(testTypes, Nvalues)
     for N in Nvalues
@@ -63,7 +69,7 @@ if Libdl.find_library("libnvpl_blas_ilp64_gomp")
     # Run tests for NVPL
     println("\n===== Switching to NVPL =====")
     # Print NVPL version here
-    println(rpad("NVPL BLAS version:", 23), lpad(NVPL.[blas,lapack]_get_version(), 8))
+    println(rpad("NVPL BLAS version:", 23), lpad(NVPL.blas_get_version(), 8))
     println(BLAS.get_config()) # Print BLAS configuration
 
     # Run tests with NVPL LinearAlgebra provider
