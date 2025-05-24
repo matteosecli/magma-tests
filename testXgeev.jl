@@ -63,7 +63,7 @@ if MKL_jll.is_available()
     runTest(testTypes, Nvalues)
 end
 
-if Libdl.find_library("libnvpl_blas_ilp64_gomp")
+if !isempty(Libdl.find_library("libnvpl_blas_ilp64_gomp"))
     using NVPL
 
     # Run tests for NVPL
