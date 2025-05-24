@@ -30,7 +30,7 @@ function runTest(testTypes, Nvalues)
             @btime eigvals(randn($T, $N, $N))
 
             println("CUDA (GPU):")
-            @btime eigvals(cu(randn($T,$N, $N)))
+            @btime eigvals(CuMatrix(randn($T,$N, $N)))
 
             println("MAGMA (GPU):")
             @btime eigvals_magma(randn($T, $N, $N))
