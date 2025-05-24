@@ -68,6 +68,8 @@ function main()
         return
     end
 
+    Pkg.instantiate()
+
     input_file = ARGS[1]
     base = splitext(basename(input_file))[1]  # Remove .log or .csv
     csv_file = ensure_csv_from_log(input_file)
