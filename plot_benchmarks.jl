@@ -1,4 +1,5 @@
 using Pkg
+Pkg.instantiate()
 
 using CSV, DataFrames, CairoMakie
 
@@ -67,8 +68,6 @@ function main()
         println("Usage: julia plot_benchmark.jl <benchmark.log or benchmark.csv>")
         return
     end
-
-    Pkg.instantiate()
 
     input_file = ARGS[1]
     base = splitext(basename(input_file))[1]  # Remove .log or .csv

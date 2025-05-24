@@ -1,3 +1,6 @@
+using Pkg
+Pkg.instantiate()
+
 module BenchmarkCSV
 
 using DataFrames
@@ -49,8 +52,6 @@ end # module
 
 # Allow script usage
 if abspath(PROGRAM_FILE) == @__FILE__
-    using Pkg
-    Pkg.instantiate()
     
     using CSV, .BenchmarkCSV
 
