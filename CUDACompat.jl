@@ -51,7 +51,7 @@ function LinearAlgebra.eigvecs(A::Hermitian{T,<:CuMatrix}) where {T<:BlasComplex
     heevd!('V', 'U', A2)[2]
 end
 function LinearAlgebra.eigvecs(A::Hermitian{T,<:CuMatrix}) where {T<:BlasReal}
-    eigvals(Symmetric(A))
+    eigvecs(Symmetric(A))
 end
 
 function LinearAlgebra.eigvecs(A::CuMatrix{T}) where {T<:BlasReal}
